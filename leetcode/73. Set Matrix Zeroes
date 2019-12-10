@@ -1,0 +1,44 @@
+=begin
+Link : https://leetcode.com/problems/set-matrix-zeroes/
+Set Matrix Zeroes
+Runtime beats 98.61% of ruby submissions.
+=end
+
+# @param {Integer[][]} matrix
+# @return {Void} Do not return anything, modify matrix in-place instead.
+require 'set'
+def set_zeroes_row(matrix,row)
+    i=0
+    while i <matrix.first.length
+        matrix[row][i]=0
+        i+=1
+    end
+end
+def set_zeroes_col(matrix,col)
+    i=0
+    while i <matrix.length
+        matrix[i][col]=0
+        i+=1
+    end
+end
+
+def set_zeroes(matrix)
+    rows={}
+    cols={}
+    col=0
+    row=0
+    while row<matrix.length
+        col=0
+        while col<matrix[row].length
+            if matrix[row][col]==0
+                rows[row]=1 
+                cols[col]=1
+            end
+            col+=1
+        end
+        row+=1 
+    end
+    rows.keys.each{|row| set_zeroes_row(matrix,row) }
+    cols.keys.each{|col| set_zeroes_col(matrix,col) }
+    matrix
+end
