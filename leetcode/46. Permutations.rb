@@ -5,13 +5,11 @@
  https://media.geeksforgeeks.org/wp-content/cdn-uploads/NewPermutation.gif
 =end
 def swaps(nums,index)
-    result=[]
-    (index+1...nums.length).each do |i|
+    (index+1...nums.length).map do |i|
         array=nums.dup
         array[i],array[index]=array[index],array[i]
-        result<< array
+        array
     end
-    result 
 end
 def permute(nums)
     final_result=[nums]
