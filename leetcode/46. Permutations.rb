@@ -1,6 +1,7 @@
 # @param {Integer[]} nums
 # @return {Integer[][]}
 =begin
+ source: https://leetcode.com/problems/permutations/
  https://media.geeksforgeeks.org/wp-content/cdn-uploads/NewPermutation.gif
 =end
 def swaps(nums,index)
