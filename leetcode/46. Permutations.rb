@@ -1,27 +1,23 @@
-=begin
-source: https://leetcode.com/problems/permutations/
-=end
 # @param {Integer[]} nums
 # @return {Integer[][]}
-def permutations(nums,i)
-    results=[]
-    j=i+1
-    while j<nums.length
-        tmp=nums.dup
-        tmp[i],tmp[j]=tmp[j],tmp[i]
-        results<< tmp
-        j+=1
+=begin
+ https://media.geeksforgeeks.org/wp-content/cdn-uploads/NewPermutation.gif
+=end
+def swaps(nums,index)
+    result=[]
+    (index+1...nums.length).each do |i|
+        array=nums.dup
+        array[i],array[index]=array[index],array[i]
+        result<< array
     end
-    results
+    result 
 end
 def permute(nums)
-    results=[nums]
-    nums.length.times do |i|
-        new_set=[]
-        results.each do |array|
-            new_set+= permutations(array,i)
+    final_result=[nums]
+    (nums.length-1).times do |swap_index|
+        final_result=final_result.flat_map do |array|
+            [array]+swaps(array,swap_index)
         end
-        results+=new_set
     end
-    results
+    final_result
 end
