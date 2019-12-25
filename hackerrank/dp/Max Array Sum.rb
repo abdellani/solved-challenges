@@ -6,7 +6,7 @@ require 'stringio'
 def maxSubsetSum(arr)
     dp=[arr.first,arr[0..1].max]
     arr[2..arr.length].each do |el|
-        dp<< [[dp[-2]+el,el].max,dp[-1]].max
+        dp<< [dp[-2]+el,el,dp[-1]].max
     end
     dp.last
 end
