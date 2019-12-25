@@ -10,7 +10,7 @@ def maxSubsetSum(arr)
     ans= dp.max
     arr[2..arr.length].each do |el|
         dp<< [[dp[-2]+el,el].max,ans].max
-        ans<< [ans,dp.last].max
+        ans= [ans,dp.last].max
     end
     ans
 end
