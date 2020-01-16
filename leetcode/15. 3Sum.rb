@@ -22,11 +22,11 @@ def three_sum(nums)
     pn=p.keys
     nn=n.keys
     
-    #p+p =n
-    #p+0 =n
-    #n+n =p
+    #p+p+n=0
+    #p+0+n=0
+    #n+n+p=0
 
-    #p+p =n
+    #p+p+n=0
     i=0
     a= pn[i]
     results<<[a,a,-2*a] if p[a]>1 and n[-2*a]>0
@@ -43,7 +43,7 @@ def three_sum(nums)
         i+=1
     end
     
-    #n+n =p
+    #n+n+p=0
     i=0
     a= nn[i]
     results<<[a,a,-2*a] if n[a]>1 and p[-2*a]>0
@@ -60,7 +60,7 @@ def three_sum(nums)
         i+=1
     end
     
-    #p+0 =n
+    #p+0+n=0
     if z>0
         i=0
         while i<pn.length
