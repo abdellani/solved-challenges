@@ -34,3 +34,16 @@ def coin_change(coins, amount)
     memory={}
     f(coins.length-1,amount,coins,memory)
 end
+
+# DP solution 
+def coin_change(coins, amount)
+    max = amount + 1
+    dp = [max]*(max)
+    dp[0]=0
+    (1..amount).each do |i|
+        (0...coins.length).each do |j|
+            dp[i]=[dp[i],dp[i-coins[j]] +1].min if coins[j]<=i
+        end
+    end
+    dp.last
+end
