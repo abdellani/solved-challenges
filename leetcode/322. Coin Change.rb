@@ -45,5 +45,5 @@ def coin_change(coins, amount)
             dp[i]=[dp[i],dp[i-coins[j]] +1].min if coins[j]<=i
         end
     end
-    dp.last
+    dp[amount]>amount ? -1 : dp[amount]
 end
