@@ -1,4 +1,29 @@
 #source : https://leetcode.com/problems/word-search/
+# @param {Character[][]} board
+# @param {String} word
+# @return {Boolean}
+def exist(board, word)
+    (0...board.length).each do |i|
+        (0...board.first.length).each do |j|
+            return true if board[i][j] == word[0] and search(board,i,j,word,-1)
+        end
+    end
+    false
+end
+def search (board,x,y,word,count)
+    return false if x<0 || y<0 || board.length<=x || board.first.length<=y
+    count +=1
+    return false if board[x][y] != word[count]
+    return true if word.length-1 == count
+    tmp=board[x][y]
+    board[x][y]=""
+    res =   search(board,x-1,y,word,count) ||
+            search(board,x+1,y,word,count) ||
+            search(board,x,y-1,word,count) ||
+            search(board,x,y+1,word,count)
+    board[x][y]=tmp
+    return res
+end
 =begin
   _   _           _             ____            _           _     _                 
  | | | |   __ _  | |  _   _    / ___|    ___   | |  _   _  | |_  (_)   ___    _ __  
